@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Lost & Found Portal</title>
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+
+<body>
+
+<!-- Navbar -->
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark shadow">
+    <div class="container">
+        <a class="navbar-brand fw-bold" href="/home">
+            🎒 Lost & Found Portal
+        </a>
+
+        <div>
+            <a href="/login" class="btn btn-outline-light me-2">
+                Login
+            </a>
+
+            <a href="/register" class="btn btn-success">
+                Register
+            </a>
+        </div>
+    </div>
+</nav>
+
+<div class="container mt-4">
+
+    <!-- Hero Section -->
+    <div class="hero-section shadow mb-4 text-center p-4">
+
+        <h1 class="text-primary fw-bold">
+            🚨 LOST AND FOUND ITEMS PORTAL
+        </h1>
+
+        <p class="lead text-dark">
+            Report and Search Lost & Found Items Easily
+        </p>
+
+    </div>
+
+    <!-- Dashboard Cards -->
+    <div class="row mt-4">
+
+        <div class="col-md-4">
+            <a href="/?filter=Lost" style="text-decoration:none;">
+                <div class="card text-bg-danger shadow">
+                    <div class="card-body text-center">
+                        <h5>🔍 Lost Items</h5>
+                        <p>View Lost Items</p>
+                    </div>
+                </div>
+            </a>
+        </div>
+
+        <div class="col-md-4">
+            <a href="/?filter=Found" style="text-decoration:none;">
+                <div class="card text-bg-success shadow">
+                    <div class="card-body text-center">
+                        <h5>✅ Found Items</h5>
+                        <p>View Found Items</p>
+                    </div>
+                </div>
+            </a>
+        </div>
+
+        <div class="col-md-4">
+            <a href="/" style="text-decoration:none;">
+                <div class="card text-bg-primary shadow">
+                    <div class="card-body text-center">
+                        <h5>🎓 Student Portal</h5>
+                        <p>View All Items</p>
+                    </div>
+                </div>
+            </a>
+        </div>
+
+    </div>
+
+    <!-- Buttons -->
+    <div class="text-center mt-4">
+
+        <a href="/add" class="btn btn-success btn-lg">
+            ➕ Add Item
+        </a>
+
+        <a href="/" class="btn btn-secondary btn-lg">
+            Show All Items
+        </a>
+
+    </div>
+
+    <!-- Search -->
+    <div class="search-box mt-4">
+
+        <form method="GET" action="/">
+
+            <div class="input-group">
+
+                <input type="text"
+                       name="search"
+                       class="form-control"
+                       placeholder="Search Lost or Found Item">
+
+                <button type="submit"
+                        class="btn btn-primary">
+                    🔍 Search
+                </button>
+
+            </div>
+
+        </form>
+
+    </div>
+
+    <hr>
+
+    <!-- Items -->
+    <h3 class="mb-3 fw-bold text-light">
+        📋 Available Items
+    </h3>
+<div class="row">
+    {% for item in items %}
+
+<div class="col-md-4 mb-4">
+    <div class="card item-card shadow h-100">
+
+        <div class="card-body">
+
+            {% if item.image %}
+            <img src="{{ url_for('static', filename='uploads/' + item.image) }}"
+                 class="img-fluid rounded mb-3"
+                 style="max-height:200px;">
+            {% endif %}
+
+            <h4 class="text-primary">
+                {{ item.name }}
+            </h4>
+
+            <p>
+                <strong>Description:</strong>
+                {{ item.description }}
+            </p>
+
+            <p>
+                <strong>Location:</strong>
+                {{ item.location }}
+            </p>
+
+            <p>
+                <strong>Status:</strong>
+
+                {% if item.type == 'Lost' %}
+                    <span class="badge bg-danger">
+                        Lost
+                    </span>
+                {% else %}
+                    <span class="badge bg-success">
+                        Found
+                    </span>
+                {% endif %}
+
+            </p>
+
+        </div>
+
+    </div>
+</div>
+
+    {% endfor %}
+</div>
+
+</div>
+
+<!-- Footer -->
+<footer class="bg-dark text-white text-center p-4 mt-5">
+
+    <h5>Lost & Found items portal</h5>
+
+   
+
+</footer>
+
+</body>
+</html>

@@ -1,0 +1,54 @@
+body{
+    background: linear-gradient(135deg, #0f172a, #1e293b);
+}
+
+.item-card{
+    background:#f8f9fa;
+    border-radius:15px;
+}
+.hero-section{
+    background-color: #e9ecef;
+    border-radius: 15px;
+    padding: 25px;
+}
+.navbar{
+    background: #0d6efd !important;
+}
+
+.card{
+    border: none;
+    border-radius: 15px;
+    background: white;
+    transition: 0.3s;
+}
+
+.card:hover{
+    transform: translateY(-4px);
+}
+
+.shadow{
+    box-shadow: 0 4px 12px rgba(0,0,0,0.08) !important;
+}
+
+.btn{
+    border-radius: 10px;
+}
+
+
+h1{
+    font-weight: bold;
+}
+
+footer{
+    margin-top: 40px;
+    box-shadow: 0px -2px 10px rgba(0,0,0,0.1);
+}
+
+.item-card{
+    border-left: 6px solid #0d6efd;
+}
+
+.search-box{
+    max-width: 600px;
+    margin: auto;
+}
